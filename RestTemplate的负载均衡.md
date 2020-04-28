@@ -106,7 +106,7 @@ public LoadBalancerInterceptor ribbonInterceptor(
 }
 ```
 
-最后反悔了一个新的LoadBalancerInterceptor对象，接着进入到LoadBalancerInterceptor中，发现它重写了一个`intercept()`方法
+最后返回了一个新的LoadBalancerInterceptor对象，接着进入到LoadBalancerInterceptor中，发现它重写了一个`intercept()`方法
 
 ```java
 @Override
@@ -118,7 +118,7 @@ public ClientHttpResponse intercept(final HttpRequest request, final byte[] body
 }
 ```
 
-此方法中先是获取了URL和主机名，进而调用成员变量`loadBalancer`的`execute()`方法。这里loadBalancer的类型为LoadBalancerClient是一个借口，它有一个实现为`RibbonLoadBalancerInterceptor`，所以它最终回去调用这个`RibbonLoadBalancerInterceptor`的`execute()`方法
+此方法中先是获取了URL和主机名，进而调用成员变量`loadBalancer`的`execute()`方法。这里loadBalancer的类型为LoadBalancerClient是一个接口，它有一个实现为`RibbonLoadBalancerInterceptor`，所以它最终回去调用这个`RibbonLoadBalancerInterceptor`的`execute()`方法
 
 ```java
 @Override
