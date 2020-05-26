@@ -80,7 +80,9 @@ spring.datasource.password = ******
 
 #### 修改配置
 
-依然同上
+依然同上。
+
+然后修改portal项目的config包下的`apollo-env.properties`文件，修改`dev.meta`为`dev.meta=http://ip1:8080,http://ip2:8080`。这里解释下，因为我这个是dev环境的集群，所以我的配置文件里面只有`dev.meta`，然后ip1是我原本dev单机的ip地址，ip2为我新加入集群的机器的ip地址。注意要用英文逗号分开
 
 #### 修改数据库
 
@@ -90,6 +92,8 @@ spring.datasource.password = ******
 
 1. 集群里的每个实例不在一台机器上(这也说明可以在一台机器上开放不同端口来部署多个实例，不过这就没有意义了，不能保证高可用，一台机器挂了，整个集群也挂了)
 2. 通过Key可以看出来Apollo是使用Eureka来做服务发现和注册的(但是听说Eureka不再维护了？Apollo会改用其他注册中心吗？)
+
+最后修改每个新加入集群的机器的configservice和adminservice的数据库配置为当前dev环境的配置。(保证每个环境只有一个数据库的准则)
 
 #### 运行服务
 
