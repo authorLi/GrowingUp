@@ -82,6 +82,8 @@ spring.datasource.password = ******
 
 依然同上。
 
+先修改新机器的configservice和adminservice的数据库配置为当前要加入环境的数据库配置(多个共用一套数据库)
+
 然后修改portal项目的config包下的`apollo-env.properties`文件，修改`dev.meta`为`dev.meta=http://ip1:8080,http://ip2:8080`。这里解释下，因为我这个是dev环境的集群，所以我的配置文件里面只有`dev.meta`，然后ip1是我原本dev单机的ip地址，ip2为我新加入集群的机器的ip地址。注意要用英文逗号分开
 
 #### 修改数据库
