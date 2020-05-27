@@ -26,7 +26,7 @@
 
 将上述压缩文件复制一份，创建一个新的文件夹并放到此文件夹里(这一步可以省略，我是为了方便才这么做的)，解压。解压后将出现三个文件夹。
 
-首先修改portal配置，进入到`apollo-portal-1.7.0-SNAPSHOT-github/config`文件夹下修改`apollo-env.properties`文件，配置好如下两行，我这里是配置了两个环境，开发和线上环境
+首先修改portal配置，进入到`apollo-portal-1.7.0-SNAPSHOT-github/config`文件夹下修改`apollo-env.properties`文件，配置好如下两行，我这里是配置了两个环境，开发和线上环境。这个所谓的meta地址指的就是Apollo Meta Server，而默认情况下，meta server和config server是部署在同一个JVM进程中的，所以meta server的地址实际上默认就是config server的地址，也就是说可以把meta server理解为注册中心，它会获取所有当前环境的config server和admin server的地址。在生产环境中建议配置域名而不是ip地址，因为服务的扩容和缩容可能会引起ip的变化
 
 ```properties
 dev.meta=http://localhost:8080
