@@ -109,7 +109,7 @@ private boolean isValidItem(ItemDTO item) {
 
 - 第一步：检验item是否是空值(对象和内容不为空或空串)
 - 第二步：完善item的信息
-- 第三步：
+- 第三步：发送HTTP请求到Admin Service创建Item
 
 #### checkModel()
 
